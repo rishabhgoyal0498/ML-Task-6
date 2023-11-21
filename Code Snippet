@@ -1,0 +1,57 @@
+Label Encoding:
+from sklearn.preprocessing import LabelEncoder
+
+# Sample dataset
+data = ['red', 'green', 'blue', 'green', 'red']
+
+# Initialize LabelEncoder
+label_encoder = LabelEncoder()
+
+# Fit and transform the data
+encoded_data = label_encoder.fit_transform(data)
+
+# Display the original and encoded data
+print("Original data:", data)
+print("Encoded data:", encoded_data)
+Output:
+Original data: ['red', 'green', 'blue', 'green', 'red']
+Encoded data: [2 1 0 1 2]
+
+One Hot Encoding:
+import pandas as pd
+
+# Sample dataset
+data = pd.DataFrame({
+    'Color': ['Red', 'Green', 'Blue', 'Green', 'Red'],
+    'Size': ['Small', 'Medium', 'Large', 'Medium', 'Small']
+})
+
+# Display the original data
+print("Original Data:")
+print(data)
+
+# One-hot encode the categorical columns using pandas get_dummies
+onehot_encoded = pd.get_dummies(data, columns=['Color', 'Size'])
+
+# Display the one-hot encoded data
+print("\nOne-Hot Encoded Data:")
+print(onehot_encoded)
+
+
+Output:
+Original Data:
+   Color    Size
+0    Red   Small
+1  Green  Medium
+2   Blue   Large
+3  Green  Medium
+4    Red   Small
+
+One-Hot Encoded Data:
+   Color_Blue  Color_Green  Color_Red  Size_Large  Size_Medium  Size_Small
+0           0            0          1           0            0           1
+1           0            1          0           0            1           0
+2           1            0          0           1            0           0
+3           0            1          0           0            1           0
+4           0            0          1           0            0           1
+
